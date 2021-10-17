@@ -84,5 +84,7 @@ let rec lookup lt x t = match t with
   out : tree t' which is t with x inserted such that t' 
         possesses BST property 
 *)
-let rec insert lt x t = Leaf   (* COMPLETE ME *)
-
+let rec insert lt x t = match t with 
+    Leaf -> Node(Leaf, x, Leaf)
+  | Node (tl, nx, tr) -> if lt(x, nx) then Node (insert lt x tl, nx, tr) 
+      else Node (tl, nx, insert lt x tr) ;;
