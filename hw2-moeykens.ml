@@ -72,7 +72,10 @@ type 'a tree = Leaf | Node of 'a tree * 'a * 'a tree
        BST property
   out : true iff x is in t
 *)
-let rec lookup lt x t = false (* COMPLETE ME *)
+let rec lookup lt x t = match t with 
+    Leaf -> false
+  | Node (tl, nx, tr) -> if nx = x then true 
+      else (if lt(x, nx) then lookup lt x tl else lookup lt x tr) ;;
 	
 (*
   insert : ('a * 'a -> bool) -> 'a -> 'a tree -> 'a tree
