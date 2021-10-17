@@ -58,7 +58,10 @@ type ameasures = Feet of float | Gallon of float | Fahrenheit of float
   out : conversion of x into corresponding american
         measurement
 *)
-let conversion em = (Feet 0.0)  (* COMPLETE ME *)
+let conversion em = match em with 
+    Meter x -> Feet (x *. 3.2808)
+  | Liter x -> Gallon (x *. 0.2641729)
+  | Centigrade x -> Fahrenheit ((x *. 1.8) +. 32.0)
 
 (* tree datatype *)
 type 'a tree = Leaf | Node of 'a tree * 'a * 'a tree
