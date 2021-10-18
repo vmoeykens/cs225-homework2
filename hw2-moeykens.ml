@@ -46,7 +46,9 @@ let rec member v l = match l with
    out : a function f : ’a list -> bool such
                    that f(l) is true iff p(x) for some x in l
 *)
-let rec exists p l = false (* COMPLETE ME *)
+let rec exists p l = match l with 
+    [] -> false
+  | x::xs -> if p(x) then true else exists p xs ;;
 
 (* measurement datatype *)
 type emeasures = Meter of float | Liter of float | Centigrade of float
